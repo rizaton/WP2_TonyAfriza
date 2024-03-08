@@ -6,6 +6,7 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('welcome_message');
+        $latihan1 = new Latihan1;
+        return $latihan1->index();
     }
 }

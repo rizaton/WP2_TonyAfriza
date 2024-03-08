@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-// helper('url');
-//defined('BASEPATH') or exit('no direct script access allowed');
+// defined('BASEPATH') or exit('no direct script access allowed');
 
 class Web extends BaseController
 {
+    protected $helpers = ['url'];
     // public function __construct()
     // {
     //     $this->index();
@@ -14,15 +14,15 @@ class Web extends BaseController
     public function index()
     {
         $data['judul'] = "Halaman Depan";
-        echo view('v_header', $data);
+        echo view('v_header');
         echo view('v_index', $data);
-        echo view('v_footer', $data);
+        echo view('v_footer');
     }
     public function about()
     {
         $data['judul'] = "Halaman About";
-        echo view('v_header', $data);
+        echo view('v_header');
         echo view('v_about', $data);
-        echo view('v_footer', $data);
+        echo view('v_footer');
     }
 }

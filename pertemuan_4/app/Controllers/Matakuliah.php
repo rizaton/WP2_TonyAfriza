@@ -13,7 +13,7 @@ class Matakuliah extends BaseController
     }
     public function cetak()
     {
-        $form_validation = \Config\Services::validation();
+        // $form_validation = \Config\Services::validation();
         $rules = [
             'kode' => [
                 'label' => 'Kode Matakuliah',

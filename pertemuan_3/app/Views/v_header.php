@@ -12,6 +12,7 @@
     <div id="wrapper">
         <header>
             <hgroup>
+                <p><?= base_url();  ?></p>
                 <h1>RentalBuku.net</h1>
                 <h3>Membuat Template Sederhana dengan
                     CodeIgniter</h3>
