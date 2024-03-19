@@ -5,7 +5,7 @@ namespace App\Controllers;
 
 class Matakuliah extends BaseController
 {
-    protected $helpers = ['form'];
+    protected $helpers = ['form', 'url'];
 
     public function index()
     {
