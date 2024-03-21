@@ -20,14 +20,14 @@ class StudentsModel extends Model
         return $this->where($where)->findAll();
     }
 
-    public function saveStudent($dataStudent)
+    public function createStudent($dataStudent)
     {
         return $this->insert($dataStudent);
     }
 
     public function updateStudent($dataUpdate = null, $whereStudent = null)
     {
-        return $this->whereIn('kdstudent', $whereStudent)
+        return $this->whereIn('studentid', $whereStudent)
             ->set($dataUpdate)
             ->update();
     }

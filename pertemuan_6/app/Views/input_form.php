@@ -27,15 +27,15 @@
             Digital Learning Management System (Di-Lemas)
         </h2>
     </center>
+    <center>
+        <p style="color: red;;">
+            <?= $message ?>
+        </p>
+    </center>
     <hr>
-    <div class="login" style="padding-top: 1.2rem;">
+    <div class="form" style="padding-top: 1.2rem;">
         <center>
-            <p style="color: red;;">
-                <?= $message ?>
-            </p>
-        </center>
-        <center>
-            <form action="<?= base_url('menu/create'); ?>" method="post">
+            <form action="<?= base_url('form/create'); ?>" method="post">
                 <table>
                     <tr>
                         <th colspan="3">
@@ -50,66 +50,66 @@
                         <th>Kode siswa</th>
                         <th>:</th>
                         <td>
-                            <input type="text" name="c_kode" id="c_kode">
+                            <input type="text" name="kode" id="kode">
                         </td>
                     </tr>
                     <tr>
                         <th>NIS</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="c_nis" id="c_nis">
+                            <input type="text" name="nis" id="nis">
                         </td>
                     </tr>
                     <tr>
                         <th>Nama Siswa</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="c_nama" id="c_nama">
+                            <input type="text" name="nama" id="nama">
                         </td>
                     </tr>
                     <tr>
                         <th>Kelas Siswa</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="c_kelas" id="c_kelas">
+                            <input type="text" name="kelas" id="kelas">
                         </td>
                     </tr>
                     <tr>
                         <th>Tanggal lahir</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="c_tanggal_lahir" id="c_tanggal_lahir">
+                            <input type="text" name="tanggal_lahir" id="tanggal_lahir">
                         </td>
                     </tr>
                     <tr>
                         <th>Tempat lahir</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="c_tempat_lahir" id="c_tempat_lahir">
+                            <input type="text" name="tempat_lahir" id="tempat_lahir">
                         </td>
                     </tr>
                     <tr>
                         <th>Alamat</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="c_alamat" id="c_alamat">
+                            <input type="text" name="alamat" id="alamat">
                         </td>
                     </tr>
                     <tr>
                         <th>Jenis Kelamin</th>
                         <td>:</td>
                         <td>
-                            <input type="radio" name="c_jenis_kelamin" id="c_laki_laki" value="Laki-Laki">
+                            <input type="radio" name="jenis_kelamin" id="laki_laki" value="Laki-Laki">
                             <label for="laki_laki">Laki-Laki</label>
-                            <input type="radio" name="c_jenis_kelamin" id="c_perempuan" value="Perempuan">
+                            <input type="radio" name="jenis_kelamin" id="perempuan" value="Perempuan">
                             <label for="perempuan">Perempuan</label>
                         </td>
                     </tr>
                     <tr>
-                        <th>SKS</th>
+                        <th>Agama</th>
                         <td>:</td>
                         <td>
-                            <select name="c_agama" id="c_agama">
+                            <select name="agama" id="agama">
                                 <option value="">--Agama--</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Kristen">Kristen</option>
@@ -169,7 +169,7 @@
         </center>
         <hr>
         <center>
-            <form action="<?= base_url('/update'); ?>" method="post">
+            <form action="<?= base_url('form/update'); ?>" method="post">
                 <table>
                     <tr>
                         <th colspan="3">
@@ -184,66 +184,66 @@
                         <th>Kode siswa</th>
                         <th>:</th>
                         <td>
-                            <input type="text" name="u_kode" id="u_kode">
+                            <input type="text" name="kode" id="kode">
                         </td>
                     </tr>
                     <tr>
                         <th>NIS</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="u_nis" id="u_nis">
+                            <input type="text" name="nis" id="nis">
                         </td>
                     </tr>
                     <tr>
                         <th>Nama Siswa</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="u_nama" id="u_nama">
+                            <input type="text" name="nama" id="nama">
                         </td>
                     </tr>
                     <tr>
                         <th>Kelas Siswa</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="u_kelas" id="u_kelas">
+                            <input type="text" name="kelas" id="kelas">
                         </td>
                     </tr>
                     <tr>
                         <th>Tanggal lahir</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="u_tanggal_lahir" id="u_tanggal_lahir">
+                            <input type="text" name="tanggal_lahir" id="tanggal_lahir">
                         </td>
                     </tr>
                     <tr>
                         <th>Tempat lahir</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="u_tempat_lahir" id="u_tempat_lahir">
+                            <input type="text" name="tempat_lahir" id="tempat_lahir">
                         </td>
                     </tr>
                     <tr>
                         <th>Alamat</th>
                         <td>:</td>
                         <td>
-                            <input type="text" name="u_alamat" id="u_alamat">
+                            <input type="text" name="alamat" id="alamat">
                         </td>
                     </tr>
                     <tr>
                         <th>Jenis Kelamin</th>
                         <td>:</td>
                         <td>
-                            <input type="radio" name="u_jenis_kelamin" id="u_laki_laki" value="Laki-Laki">
+                            <input type="radio" name="jenis_kelamin" id="laki_laki" value="Laki-Laki">
                             <label for="laki_laki">Laki-Laki</label>
-                            <input type="radio" name="u_jenis_kelamin" id="u_perempuan" value="Perempuan">
+                            <input type="radio" name="jenis_kelamin" id="perempuan" value="Perempuan">
                             <label for="perempuan">Perempuan</label>
                         </td>
                     </tr>
                     <tr>
-                        <th>SKS</th>
+                        <th>Agama</th>
                         <td>:</td>
                         <td>
-                            <select name="u_agama" id="u_agama">
+                            <select name="agama" id="agama">
                                 <option value="">--Agama--</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Kristen">Kristen</option>
@@ -265,7 +265,7 @@
         </center>
         <hr>
         <center>
-            <form action="<?= base_url('/delete'); ?>" method="post">
+            <form action="<?= base_url('form/delete'); ?>" method="post">
                 <table>
                     <tr>
                         <th colspan="3">
@@ -280,7 +280,7 @@
                         <th>Kode siswa</th>
                         <th>:</th>
                         <td>
-                            <input type="text" name="d_kode" id="d_kode">
+                            <input type="text" name="d_kode" id="kode">
                         </td>
                     </tr>
                     <tr>
@@ -292,12 +292,6 @@
             </form>
         </center>
     </div>
-    <hr>
-    <center>
-        <form action="<?= base_url('/logout');  ?>">
-            <input type="submit" value="Logout">
-        </form>
-    </center>
     <div class="simple_padding" style="padding-bottom: 5rem;"></div>
 </body>
 
