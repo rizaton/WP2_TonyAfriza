@@ -35,7 +35,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
                     Cancel
                 </button>
-                <a class="btn btn-primary" href="<?= base_url('autentifikasi/logout'); ?>">
+                <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">
                     Logout
                 </a>
             </div>
