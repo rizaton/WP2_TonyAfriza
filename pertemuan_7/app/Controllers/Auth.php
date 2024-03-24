@@ -54,7 +54,6 @@ class Auth extends BaseController
     }
     private function login()
     {
-
         $email = htmlspecialchars(
             $this->request->getPost('email', true) ?? ''
         );
