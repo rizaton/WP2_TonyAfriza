@@ -27,4 +27,19 @@ class User extends BaseController
         echo view('user/index', $data);
         echo view('templates/footer');
     }
+    public function members()
+    {
+        $data = [
+            'judul' => 'Data Anggota',
+            'user' => $this->userModels->whereUser(
+                ['email' => $this->session->get('email')]
+            )->first(),
+            'anggota' => $this->userModels->getUserLimit(),
+        ];
+        echo view('templates/header', $data);
+        echo view('templates/sidebar', $data);
+        echo view('templates/topbar', $data);
+        echo view('user/anggota', $data);
+        echo view('templates/footer');
+    }
 }

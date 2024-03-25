@@ -25,10 +25,10 @@
                                         <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password">
                                         <?= service('validation')->getError('password') ?>
                                     </div>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        Masuk
+                                    </button>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">
-                                Masuk
-                            </button>
                             </form>
                             <hr>
                             <div class="text-center">

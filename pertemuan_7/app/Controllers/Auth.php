@@ -49,7 +49,7 @@ class Auth extends BaseController
             echo view('login');
             echo view('templates/aute_footer');
         } else {
-            $this->login();
+            return $this->login();
         }
     }
     private function login()
@@ -96,8 +96,8 @@ class Auth extends BaseController
                         Silahkan Ubah Profile Anda untuk Ubah Photo Profil
                     </div>'
                 );
-                return redirect()->to(base_url('user'));
             }
+            return redirect()->to(base_url('user'));
         }
     }
 }

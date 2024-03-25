@@ -19,7 +19,7 @@ class Auth extends BaseController
         $data = [
             'judul' => 'Dashboard',
             'user' => $this->userModels->whereUser(['email' => $this->session->get('email')])->first(),
-            'anggota' => $this->userModels->getUserLimit()->result_array(),
+            'anggota' => $this->userModels->getUserLimit(),
             'buku' => $this->bookModels->getBook()->result_array(),
         ];
         echo view('templates/header', $data);
