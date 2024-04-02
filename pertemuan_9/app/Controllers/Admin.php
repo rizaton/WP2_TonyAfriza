@@ -13,19 +13,26 @@ class Auth extends BaseController
     {
         $this->userModels = new UserModel();
         $this->session = \Config\Services::session();
+        dd();
     }
     public function index()
     {
-        $data = [
-            'judul' => 'Dashboard',
-            'user' => $this->userModels->whereUser(['email' => $this->session->get('email')])->first(),
-            'anggota' => $this->userModels->getUserLimit()->result_array(),
-            'buku' => $this->bookModels->getBook()->result_array(),
-        ];
-        echo view('templates/header', $data);
-        echo view('templates/sidebar', $data);
-        echo view('templates/topbar', $data);
-        echo view('admin/index', $data);
-        echo view('templates/footer');
+        // $data = [
+        //     'judul' => 'Dashboard',
+        //     'user' => $this->userModels->whereUser(['email' => $this->session->get('email')])->first(),
+        //     'anggota' => $this->userModels->getUserLimit(),
+        //     'buku' => $this->bookModels->getBook()->result_array(),
+        // ];
+        // $data = [
+        //     'judul' => 'Dashboard',
+        //     'user' => $this->userModels->whereUser(['email' => $this->session->get('email')])->first(),
+        //     'anggota' => $this->userModels->getUserLimit(),
+        //     'buku' => $this->bookModels->getBook()->result_array(),
+        // ];
+        // echo view('templates/header', $data);
+        // echo view('templates/sidebar', $data);
+        // echo view('templates/topbar', $data);
+        // echo view('admin/index', $data);
+        // echo view('templates/footer');
     }
 }

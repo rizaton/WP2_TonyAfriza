@@ -31,10 +31,10 @@
                             </div>
                             <div class="h1 mb-0 font-weight-bold text-white">
                                 <?php
-                                $where = new \App\Models\BookModel;
-                                $where->total(
+                                $where = ['$stock != 0'];
+                                $totalStock = $this->bookModel->total(
                                     'stock',
-                                    '`stock` != 0'
+                                    $where
                                 );
                                 echo $totalstok;
                                 ?>

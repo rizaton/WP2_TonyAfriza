@@ -151,14 +151,15 @@ class Auth extends BaseController
             echo view('auth/registration');
             echo view('templates/aute_footer');
         } else {
+            $email = $this->request->getVar('email', FILTER_SANITIZE_EMAIL);
             $data = [
-                'name' => htmlspecialchars($this->request->getVar('nama')),
-                'email' => $this->request->getVar('email', FILTER_SANITIZE_EMAIL),
+                'nama' => htmlspecialchars($this->request->getVar('nama')),
+                'email' => $email,
                 'image' => 'default.jpg',
                 'password' => password_hash($this->request->getVar('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
                 'is_active' => 0,
-                'input_date' => time()
+                'tanggal_input' => time()
             ];
             $this->userModels->insert($data);
             $this->session->setFlashdata(
