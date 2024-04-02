@@ -14,3 +14,8 @@ function loginCheck()
         return $session->get('role_id');
     }
 }
+function logout()
+{
+    session()->remove('user_id');
+    return redirect()->to('/auth');
+}

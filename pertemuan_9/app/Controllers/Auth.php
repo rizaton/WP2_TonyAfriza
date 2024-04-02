@@ -66,7 +66,7 @@ class Auth extends BaseController
                     Email tidak terdaftar!!
                 </div>'
             );
-            return redirect()->to(base_url('autentifikasi'));
+            return redirect()->to(base_url('auth'));
         }
         if ($user['is_active'] != 1) {
             $this->session->setFlashdata(
@@ -75,7 +75,7 @@ class Auth extends BaseController
                 User belum diaktifasi!!
                 </div>'
             );
-            return redirect()->to(base_url('autentifikasi'));
+            return redirect()->to(base_url('auth'));
         }
         if (!password_verify($password, $user['password'])) {
             $this->session->setFlashdata(
@@ -84,9 +84,10 @@ class Auth extends BaseController
                     Password salah!!
                 </div>'
             );
-            return redirect()->to(base_url('autentifikasi'));
+            return redirect()->to(base_url('auth'));
         }
         if ($user['role_id'] == 1) {
+            $this->session->set('user_id', $this->userModels->whereData(['email' => $email]));
             return redirect()->to(base_url('admin'));
         } else {
             if ($user['image'] == 'default.jpg') {

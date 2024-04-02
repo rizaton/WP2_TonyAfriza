@@ -9,7 +9,11 @@
                         <div class="col mr-2">
                             <div class="text-md font-weight-bold text-white text-uppercase mb-1">Jumlah Anggota</div>
                             <div class="h1 mb-0 font-weight-bold text-white">
-                                <?= $this->ModelUser->getUserWhere(['role_id' => 1])->num_rows(); ?>
+                                <?php
+                                $userModels = new \App\Models\UserModel();
+                                $totalUser = $userModels->whereUser(['role_id' => 1])->countAllResults();
+                                echo $totalUser;
+                                ?>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -32,11 +36,11 @@
                             <div class="h1 mb-0 font-weight-bold text-white">
                                 <?php
                                 $where = new \App\Models\BookModel;
-                                $where->total(
+                                $total = $where->total(
                                     'stock',
                                     '`stock` != 0'
                                 );
-                                echo $totalstok;
+                                echo $total;
                                 ?>
                             </div>
                         </div>
@@ -59,12 +63,12 @@
                             </div>
                             <div class="h1 mb-0 font-weight-bold text-white">
                                 <?php
-                                $where = ['$borrowed != 0'];
-                                $totalBorrowed = $this->bookModel->total([
+                                $where = new \App\Models\BookModel;
+                                $total = $where->total(
                                     'borrowed',
-                                    $where
-                                ]);
-                                echo $totaldipinjam;
+                                    '`borrowed` != 0'
+                                );
+                                echo $total;
                                 ?>
                             </div>
                         </div>
@@ -87,9 +91,12 @@
                             </div>
                             <div class="h1 mb-0 font-weight-bold text-white">
                                 <?php
-                                $where = ['$booked != 0'];
-                                $totalBooked = $this->bookModel->total('booked', $where);
-                                echo $totalBooked;
+                                $where = new \App\Models\BookModel;
+                                $total = $where->total(
+                                    'booked',
+                                    '`booked` != 0'
+                                );
+                                echo $total;
                                 ?>
                             </div>
                         </div>

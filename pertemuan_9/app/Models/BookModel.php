@@ -1,5 +1,4 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
 
 namespace App\Models;
 
@@ -39,7 +38,7 @@ class BookModel extends Model
     public function total($field, $where = null)
     {
         $this->selectSum($field);
-        if (!empty($where) && count($where) > 0) {
+        if (!empty($where) && count(explode(" ", $where)) > 0) {
             $this->where($where);
         }
         return $this->get()->getRow($field);

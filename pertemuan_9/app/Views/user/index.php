@@ -24,7 +24,7 @@
                     </p>
                 </div>
                 <div class="btn btn-info ml-3 my-3">
-                    <a href="<?= base_url('user/change_profile'); ?>" class="text text-white">
+                    <a href="<?= base_url('user/changeProfile'); ?>" class="text text-white">
                         <i class="fas fa-user-edit"></i>
                         Ubah Profil
                     </a>
