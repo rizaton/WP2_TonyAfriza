@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UserModel extends Model
 {
     protected $table            = 'user';
-    protected $primaryKey       = 'idUser';
+    protected $primaryKey       = 'id';
 
     // Functions
     public function createUser($dataUser = null)
@@ -22,16 +22,13 @@ class UserModel extends Model
 
     public function checkUserAccess($where = null)
     {
-        return $this->db->table('acess_menu')
+        return $this->db->table('access_menu')
             ->select('*')
             ->where($where)
             ->get();
     }
-    public function getUserLimit()
+    public function userGetLimit()
     {
-        return $this->db->table('user')
-            ->select('*')
-            ->limit(10, 0)
-            ->get();
+        return $this->findAll(10, 0);
     }
 }

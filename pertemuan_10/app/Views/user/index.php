@@ -2,7 +2,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6 justify-content-x">
-            <?= $this->session->flashdata('pesan'); ?>
+            <?php
+            $session = \Config\Services::session();
+            echo $session->getFlashdata('message'); ?>
         </div>
     </div>
     <div class="card mb-3" style="max-width: 540px;">
@@ -17,12 +19,12 @@
                     <p class="card-text">
                         <small class="text-muted">
                             Jadi member sejak: <br>
-                            <b><?= date('d F Y', $user['tanggal_input']); ?></b>
+                            <b><?= date('d F Y', $user['input_date']); ?></b>
                         </small>
                     </p>
                 </div>
                 <div class="btn btn-info ml-3 my-3">
-                    <a href="<?= base_url('user/change_profile'); ?>" class="text text-white">
+                    <a href="<?= base_url('user/changeProfile'); ?>" class="text text-white">
                         <i class="fas fa-user-edit"></i>
                         Ubah Profil
                     </a>

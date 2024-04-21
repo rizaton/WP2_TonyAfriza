@@ -6,7 +6,9 @@ class Home extends BaseController
 {
     public function index()
     {
-        $latihan1 = new Latihan1;
-        return $latihan1->index();
+        $contoh1 = new Contoh1;
+        $contoh2 = new Latihan1;
+
+        return $contoh2->index();
     }
 }

@@ -66,7 +66,7 @@ class Auth extends BaseController
                     Email tidak terdaftar!!
                 </div>'
             );
-            return redirect()->to(base_url('autentifikasi'));
+            return redirect()->to(base_url('auth'));
         }
         if ($user['is_active'] != 1) {
             $this->session->setFlashdata(
@@ -75,7 +75,7 @@ class Auth extends BaseController
                 User belum diaktifasi!!
                 </div>'
             );
-            return redirect()->to(base_url('autentifikasi'));
+            return redirect()->to(base_url('auth'));
         }
         if (!password_verify($password, $user['password'])) {
             $this->session->setFlashdata(
@@ -84,9 +84,10 @@ class Auth extends BaseController
                     Password salah!!
                 </div>'
             );
-            return redirect()->to(base_url('autentifikasi'));
+            return redirect()->to(base_url('auth'));
         }
         if ($user['role_id'] == 1) {
+            $this->session->set('user_id', $this->userModels->whereData(['email' => $email]));
             return redirect()->to(base_url('admin'));
         } else {
             if ($user['image'] == 'default.jpg') {
@@ -151,15 +152,14 @@ class Auth extends BaseController
             echo view('auth/registration');
             echo view('templates/aute_footer');
         } else {
-            $email = $this->request->getVar('email', FILTER_SANITIZE_EMAIL);
             $data = [
-                'nama' => htmlspecialchars($this->request->getVar('nama')),
-                'email' => $email,
+                'name' => htmlspecialchars($this->request->getVar('nama')),
+                'email' => $this->request->getVar('email', FILTER_SANITIZE_EMAIL),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->request->getVar('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
                 'is_active' => 0,
-                'tanggal_input' => time()
+                'input_date' => time()
             ];
             $this->userModels->insert($data);
             $this->session->setFlashdata(

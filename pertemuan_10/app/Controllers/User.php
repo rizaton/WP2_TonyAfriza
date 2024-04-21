@@ -9,17 +9,30 @@ class User extends BaseController
     protected $helpers = ['helper_lib', 'form'];
     private $session;
     private $userModels;
+    protected $testing = 'testing';
     public function __construct()
     {
-        loginCheck();
+        // loginCheck();
         $this->userModels = new UserModel();
         $this->session = \Config\Services::session();
+        $this->session->setFlashdata('message', null);
+        // dd(mktime(1, 5, 2, 2, 3, 2));
+        // dd(FCPATH);
     }
     public function index()
     {
+        // $data = [
+        //     'judul' => 'Profil Saya',
+        //     'user' => $this->userModels->where(['email' => $this->session()->getFlashData('email')])->getRowArray()
+        // ];
         $data = [
-            'judul' => 'Profil Saya',
-            'user' => $this->userModels->cekData(['email' => session()->get('email')])->row_array()
+            'title' => 'Profil Saya',
+            'user' => [
+                'image' => 'undraw_profile.svg',
+                'name' => 'Ahmad Fikri Kusumah',
+                'email' => 'fikal2kusumah@gmail.com',
+                'input_date' => mktime(1, 1, 1, 3, 26, 2024),
+            ],
         ];
         echo view('templates/header', $data);
         echo view('templates/sidebar', $data);
@@ -30,11 +43,11 @@ class User extends BaseController
     public function members()
     {
         $data = [
-            'judul' => 'Data Anggota',
+            'title' => 'Data Anggota',
             'user' => $this->userModels->whereUser(
                 ['email' => $this->session->get('email')]
             )->first(),
-            'anggota' => $this->userModels->getUserLimit(),
+            'members' => $this->userModels->userGetLimit(),
         ];
         echo view('templates/header', $data);
         echo view('templates/sidebar', $data);
@@ -42,13 +55,19 @@ class User extends BaseController
         echo view('user/members', $data);
         echo view('templates/footer');
     }
-    public function change_profile()
+    public function changeProfile()
     {
         $data = [
-            'judul' => 'Ubah Profil',
-            'user' => $this->userModels->where(
+            'title' => 'Ubah Profil',
+            'members' => $this->userModels->where(
                 ['email' => $this->session->get('email')]
             )->first(),
+            'user' => [
+                'image' => 'default.jpg',
+                'name' => 'Ahmad Fikri Kusumah',
+                'email' => 'fikal2kusumah@gmail.com',
+                'input_date' => mktime(1, 1, 1, 3, 26, 2024),
+            ],
         ];
         if (!$this->validate([
             'name' => [
@@ -59,10 +78,11 @@ class User extends BaseController
                 ]
             ],
         ])) {
+            // echo view('templates/test', $data);
             echo view('templates/header', $data);
             echo view('templates/sidebar', $data);
             echo view('templates/topbar', $data);
-            echo view('user/ubah-profile', $data);
+            echo view('user/changeProfile', $data);
             echo view('templates/footer');
         } else {
             $name = $this->request->getVar('name', true);
@@ -78,17 +98,22 @@ class User extends BaseController
                     ]
                 ]);
             }
-            $pathUpload = WRITEPATH . 'upload/profile/';
+            $pathUpload = FCPATH . 'assets/img/profile/';
             $newFileName = $file->getRandomName();
             $file->move($pathUpload, $newFileName);
             $oldImage = $data['user']['iamge'];
             if ($oldImage && $oldImage != 'default.jpg') {
                 unlink($pathUpload, $newFileName);
             }
-            $this->userModels->set('image', 'profile/' . $newFileName);
-            $this->userModels->set('name', $name);
-            $this->userModels->set('email', $email);
-            $this->userModels->update('user');
+            // $this->userModels->set('image', 'profile/' . $newFileName);
+            // $this->userModels->set('name', $name);
+            // $this->userModels->set('email', $email);
+            $this->userModels->update('user', [
+                'image' => 'profile/' . $newFileName,
+                'name' => $name,
+                'email' => $email
+            ]);
+            // $this->userModels->update('user');
             $this->session->setFlashdata(
                 'message',
                 '<div  class="alert alert-success alert-message" role="alert">
