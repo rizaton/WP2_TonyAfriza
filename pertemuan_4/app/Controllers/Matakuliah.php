@@ -17,10 +17,9 @@ class Matakuliah extends BaseController
         $rules = [
             'kode' => [
                 'label' => 'Kode Matakuliah',
-                'rules' => 'required|min_length[3]',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Kode matakuliah Harus diisi',
-                    'min_length' => 'Kode terlalu pendek'
                 ]
             ],
             'nama' => [

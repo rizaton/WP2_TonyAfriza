@@ -42,7 +42,7 @@ class Auth extends BaseController
         ];
         if (!$this->validate($rules)) {
             $data = [
-                'judul' => 'login',
+                'title' => 'login',
                 'user' => '',
             ];
             echo view('templates/aute_header', $data);
