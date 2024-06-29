@@ -6,6 +6,11 @@
 
 <body>
     <center>
+        <?php
+        if ($validate != null) {
+            echo $validate;
+        }
+        ?>
         <form action="<?= base_url('matakuliah/cetak'); ?>" method="post">
             <table>
                 <tr>

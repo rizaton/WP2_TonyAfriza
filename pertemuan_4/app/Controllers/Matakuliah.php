@@ -2,14 +2,13 @@
 
 namespace App\Controllers;
 
-
 class Matakuliah extends BaseController
 {
     protected $helpers = ['form', 'url'];
 
     public function index()
     {
-        return view('view-form-matakuliah');
+        return view('view-form-matakuliah', ['validate' => validation_list_errors()]);
     }
     public function cetak()
     {
@@ -17,7 +16,7 @@ class Matakuliah extends BaseController
         $rules = [
             'kode' => [
                 'label' => 'Kode Matakuliah',
-                'rules' => 'required',
+                'rules' => 'required|min_length[3]',
                 'errors' => [
                     'required' => 'Kode matakuliah Harus diisi',
                 ]
@@ -33,14 +32,15 @@ class Matakuliah extends BaseController
         ];
         // $form_validation->setRules($rules);
         if (!$this->validate($rules)) {
-            return view('view-form-matakuliah');
+            return view('view-form-matakuliah', [
+                'validate' => validation_list_errors(),
+            ]);
         } else {
             $data = [
                 'kode' => $this->request->getPost('kode'),
                 'nama' => $this->request->getPost('nama'),
                 'sks' => $this->request->getPost('sks'),
             ];
-            // return redirect()->to('view-data-matakuliah')->withInput();
             return view('view-data-matakuliah', $data);
         }
     }
